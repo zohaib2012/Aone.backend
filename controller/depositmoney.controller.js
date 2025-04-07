@@ -1,6 +1,6 @@
 // controller/transactoin.controller.js
 
-import cloudinary from "../Middleware/Cloudinary.js";
+import cloudinary from "../Middleware/cloudinary.js";
 import { Depositedmoneyshm } from "../model/depositmoney.model.js";
 
 export const sendmoney = async (req, res) => {
