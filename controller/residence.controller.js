@@ -1,4 +1,4 @@
-import cloudinary from "../Middleware/Cloudinary.js";
+import cloudinary from "../Middleware/cloudinary.js";
 import { residensedocs } from "../model/residence.js";
 
 export let uploadresidencedoc=async(req,res)=>{
