@@ -31,7 +31,7 @@ let startserver = () => {
    
     app.use(
         cors({
-            origin: "aone-trade-f5oz.vercel.app",  
+            origin: "https://aone-trade-f5oz.vercel.app",  
             methods: ["GET", "POST", "PUT", "DELETE"],  
             credentials: true, 
         })
