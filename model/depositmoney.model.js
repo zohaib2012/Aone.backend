@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 const depositMoneySchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "usershm",  // Ensure this matches your actual User model
+    ref: "user",  // Ensure this matches your actual User model
     required: true
   },
   amount: {
