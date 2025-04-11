@@ -6,21 +6,11 @@ import { Depositedmoneyshm } from "../model/depositmoney.model.js";
 export const sendmoney = async (req, res) => {
   try {
     const { amount, date } = req.body;
-console.log(amount,date)
+    console.log(amount, date)
     if (!amount || !date) {
       return res.status(400).json({ message: "Amount and date are required" });
     }
 
-    // const numericAmount = Number(amount);
-    // const dateObj = new Date(date);
-
-    // if (isNaN(numericAmount) || numericAmount <= 0) {
-    //   return res.status(400).json({ message: "Amount must be a positive number" });
-    // }
-
-    // if (isNaN(dateObj.getTime())) {
-    //   return res.status(400).json({ message: "Invalid date format" });
-    // }
 
     const imageUrls = [];
     if (req.files?.length) {
@@ -69,3 +59,50 @@ export const displaymoneytranstions = async (req, res) => {
     return res.status(500).json({ message: "Server error" });
   }
 };
+
+export const displayallmoneytransactions = async (req, res) => {
+  try {
+    let data = await Depositedmoneyshm.find()
+    if (!data) {
+      return res.status(400).json({ message: "Error while fetching data" })
+    }
+
+    return res.status(200).json({
+      message: "Transactions retrieved successfully",
+      count: data.length,
+      data: data
+    });
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+export let addfund = async (req, res) => {
+  try {
+    let { amount } = req.body
+
+    if (!amount) {
+      return res.status(400).json({ message: "user or amount not found" })
+    }
+
+    let user = await Depositedmoneyshm.find({ user: req.user._id })
+
+    console.log(user)
+
+    if (!user) {
+      return res.status(400).json({ message: "user not found" })
+    }
+
+    let bal = user.balance
+    user.balance += amount
+    console.log(bal)
+
+
+    await user.save()
+    return res.status(200).json({ message: "balance updated sucessfully", user })
+  } catch (error) {
+    console.log(error)
+  }
+}

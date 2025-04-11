@@ -1,18 +1,18 @@
 import express from "express";
 import { config } from "dotenv";
 import { connectdatabase } from "./config/dbarear.js";
-import { userroutes } from "./routes/userroutes.js";
+import { userroutes } from "./api/routes/userroutes.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import path from "path";
-import documentroutes from "./routes/uploaddocunments.js";
+import documentroutes from "./api/routes/uploaddocunments.js";
 import { fileURLToPath } from 'url';
-import { messagesroutes } from "./routes/messages.routes.js";
-import { personaldetailroutes } from "./routes/personaldetail.js";
-import depositemoneyroutes from "./routes/transactions.routes.js";
-import { emailroutes } from "./routes/emailverification.js";
-import { createaccuntroutes } from "./routes/createaccount.routes.js";
-import residencedocsroutes from "./routes/residencedocs.js";
+import { messagesroutes } from "./api/routes/messages.routes.js";
+import { personaldetailroutes } from "./api/routes/personaldetail.js";
+import depositemoneyroutes from "./api/routes/transactions.routes.js";
+import { emailroutes } from "./api/routes/emailverification.js";
+import { createaccuntroutes } from "./api/routes/createaccount.routes.js";
+import residencedocsroutes from "./api/routes/residencedocs.js";
 
 // Load environment variables from .env
 config();
@@ -24,16 +24,16 @@ let startserver = () => {
     let app = express();
 
     // Middlewares
-    app.use(express.json()); 
-    app.use(express.text());  
-    app.use(cookieParser()); 
+    app.use(express.json());
+    app.use(express.text());
+    app.use(cookieParser());
 
-   
+
     app.use(
         cors({
-            origin: "https://aone-trade-f5oz.vercel.app",  
-            methods: ["GET", "POST", "PUT", "DELETE"],  
-            credentials: true, 
+            origin: "http://localhost:5173",
+            methods: ["GET", "POST", "PUT", "DELETE"],
+            credentials: true,
         })
     );
 
@@ -41,12 +41,12 @@ let startserver = () => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    
+
     app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-    
+
     app.use('/api/documents', documentroutes);
-    app.use('/api/users', userroutes); 
+    app.use('/api/users', userroutes);
     app.use('/api/messages', messagesroutes);
     app.use('/api/p-detail', personaldetailroutes);
     app.use('/api/transactions', depositemoneyroutes);

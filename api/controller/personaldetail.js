@@ -23,7 +23,7 @@ export let displaypersonaldetail=async(req,res)=>{
             
             return res.status(400).json({message:"data not found"})
         }
-        return res.status(200).json({message:"Get data sucessfully",details})
+        return res.status(200).json({message:"Get data sucessfully",data:details, count:details.length})
     } catch (error) {
         console.log(error)
     }

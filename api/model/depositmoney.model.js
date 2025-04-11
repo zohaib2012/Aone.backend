@@ -17,6 +17,7 @@ const depositMoneySchema = new mongoose.Schema({
     type: Date,
     required: [true, "Date is required"]
   },
+  balance:{type:Number, default:0},
   images: [String]
 }, { timestamps: true });
 

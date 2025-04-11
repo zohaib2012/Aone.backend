@@ -4,5 +4,5 @@ let messageschema= mongoose.Schema({
     email:{type:String,required:true} ,
     phone:{type:Number,required:true} ,
     message:{type:String,required:true} 
-})
+},{timestamps:true})
 export let messageshm= new mongoose.model("messages model", messageschema)

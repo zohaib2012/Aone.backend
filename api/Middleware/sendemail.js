@@ -17,9 +17,9 @@ export const transporter = nodemailer.createTransport({
  export const sendEmail=async()=>{
     try {
         const info = await transporter.sendMail({
-            from: '"Maddison Foo Koch 👻" <zk4326139@gmail.com>', // sender address
+            from: '"Aone Trade " <zk4326139@gmail.com>', // sender address
             to: "bar@example.com, baz@example.com", // list of receivers
-            subject: "Hello ✔", // Subject line
+            subject: "Verification code", // Subject line
             text: "Hello world?", // plain text body
             html: "<b>Hello world?</b>", // html body
           });

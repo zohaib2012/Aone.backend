@@ -1,23 +1,6 @@
 
-
-// export const sendverificationcode = async (email, verificationCode) => {
-//     try {
-//         const resonse = await transporter.sendMail({
-
 import { transporter } from "./sendemail.js";
 
-//             from: '"Aone World NO.1 Trade" <zk4326139@gmail.com>', // sender address
-//             to: email,
-//             subject: "Aone Trade", // Subject line
-//             text: "Hello world?", // plain text body
-//             html: verificationCode
-//         });
-//         console.log("code sent sucessfully")
-//         console.log(resonse)
-//     } catch (error) {
-//         console.log("erroe here", error)
-//     }
-// }
 export const sendverificationcode = async (email, verificationCode) => {
     try {
         const response = await transporter.sendMail({

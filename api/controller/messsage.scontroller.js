@@ -22,7 +22,7 @@ export let displaymessage = async (req, res) => {
 
             return res.status(400).json({ message: "Users not found" })
         }
-        return res.status(200).json({ message: "Get Users sucessfully", messages })
+        return res.status(200).json({ message: "Get Users sucessfully", data:messages })
     } catch (error) {
         console.log(error)
     }

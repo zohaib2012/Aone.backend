@@ -60,3 +60,16 @@ export const getdocuments = async (req, res) => {
     return res.status(500).json({ message: "Server error" });
   }
 };
+
+
+export let getalldocuments=async(req,res)=>{
+  try {
+    let data=await Document.find()
+    if(!data){
+      return res.status(400).json({message:"Error while fetchind documents"})
+    }
+    return res.status(200).json({message:"Documents fetch sucessfully",data:data,count:data.length})
+  } catch (error) {
+    console.log(error)
+  }
+}
