@@ -15,7 +15,7 @@ export const generateverificationcode = async (req, res) => {
             email, verificationCode
         })
         sendverificationcode(newemailshm.email, verificationCode)
-        return res.status(200).json({ message: "code send sucssfully ", newemailshm })
+        return res.status(200).json({ message: "code send sucssfully " })
 
     } catch (error) {
         console.log(error)
@@ -30,7 +30,7 @@ export const verifycode = async (req, res) => {
         if (!detail) {
             return res.status(400).json({ message: "invalid or expire" })
         }
-        detail.isVerifiede = true
+        detail.isVerified = true
         detail.verificationCode = undefined
 
         return res.status(200).json({ message: "Email verified sucessfully" })

@@ -19,9 +19,9 @@ userroutes.route("/get").get(protectedroutes, displayusers);
 
 
 
-userroutes.route("/send-code").post(protectedroutes, generateverificationcode);
-userroutes.route("/verify-code").post(protectedroutes, verifycode);
-userroutes.route("/forgetpassword").post( protectedroutes,forgetPassword)
+userroutes.route("/send-code").post( generateverificationcode);
+userroutes.route("/verify-code").post( verifycode);
+userroutes.route("/forgetpassword").post(forgetPassword)
 
 
 userroutes.route("/updatepassword").post( protectedroutes,updatepassword)

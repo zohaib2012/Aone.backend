@@ -9,9 +9,12 @@ export let registeruser = async (req, res) => {
         let { country, email, password } = req.body;
         const existingUser = await usershm.findOne({ email });
 
-        if (existingUser) {
-            return res.status(200).json({ message: "User already exists" });
-        }
+    if (existingUser) {
+        console.log("user already exist")
+        return res.status(400).json({ message: "User already exists" });
+    }
+    
+
 
         let hashedpassword = await bcrypt.hash(password, 10);
 
